@@ -1,0 +1,9 @@
+.contenido{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vmin;
+  width: 100%;
+  background: url(../../assets/Fondos-web.jpg.crdownload) no-repeat center center;
+  background-size: cover;
+}
