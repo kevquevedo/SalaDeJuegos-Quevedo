@@ -1,19 +1,46 @@
 <div class="toolbar">
   <nav class="navbar bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="../../assets/Logo.png" alt=" " width="70" height="35" class="d-inline-block align-text-top">
-        <span class="fs-3 align-text-top">  Juegos</span>
-      </a>
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <a class="navbar-brand"  routerLink="">
+        <img src="../../assets/Logo.png" alt=" " width="70" height="35" class="d-inline-block align-text-bottom">
+        <span class="fs-3 align-text-top">  Juegos</span>
+      </a>
+
+
+      <div class="d-flex ">
+        <!--BOTON LOGIN-->
+        <button *ngIf="usuarioNombre == undefined && usuarioApellido == undefined" mat-raised-button class="text-bg-info" (click)="irAlLogin()">
+          <mat-icon>login</mat-icon>
+          Ingresar
+        </button>
+
+        <p class="edit h5 text-danger border-bottom border-danger"
+        *ngIf="usuarioNombre != undefined && usuarioApellido != undefined">Hola {{usuarioNombre}} {{usuarioApellido}}!</p>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+
+        <div class="d-flex justify-content-center align-items-center">
+          <!--BOTON LOGOUT-->
+          <button *ngIf="usuarioNombre != undefined && usuarioApellido != undefined" mat-raised-button class="text-bg-danger" (click)="irAlLogout()">
+            <mat-icon>logout</mat-icon>
+            Salir
+          </button>
+        </div>
+
+      </div>
+
+      <div class="collapse  navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
+          <a class="nav-link active" routerLink="">Inicio</a>
           <a class="nav-link active" routerLink="juegos">Juegos Disponibles</a>
           <a class="nav-link active" routerLink="quiensoy">Quien Soy</a>
         </div>
       </div>
+
     </div>
   </nav>
 </div>

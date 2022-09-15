@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "kevin-saladejuegos-bf1fc"
-  }
+    "default": "kevquevedo-salajuegos",
+    "k": "kevquevedo-salajuegos"
+  },
+  "targets": {},
+  "etags": {}
 }

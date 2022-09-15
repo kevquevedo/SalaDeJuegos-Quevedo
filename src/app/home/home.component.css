@@ -7,3 +7,7 @@
   background: url(../../assets/Fondos-web.jpg.crdownload) no-repeat center center;
   background-size: cover;
 }
+
+.edit{
+  align-items: stretch;
+}

@@ -1,19 +1,53 @@
 <body>
   <header>
-      <h1>Login - KQ Juegos</h1>
+      <h1>KQ Juegos - Login</h1>
   </header>
-  <main>
+  <main id="wrapper">
       <form id="login_form" class="form_class">
-          <div class="form_div">
-              <label>Usuario:</label>
-              <input class="field_class" name="login_txt" type="text" placeholder="Ingrese usuario" autofocus>
-              <label>Contraseña:</label>
-              <input id="pass" class="field_class" name="password_txt" type="password" placeholder="Ingrese contraseña">
-              <button class="submit_class" type="submit" form="login_form" onclick="return validarLogin()">Entrar</button>
+        <div class="position-relative">
+          <img src="../../assets/Logo.png" alt=" " width="70" height="35" class="position-absolute top-0 start-50 translate-middle-x">
+        </div><br><br><br>
+        <div class="form_div">
+
+          <!--Email-->
+          <form [formGroup]="formulario">
+            <label class="labels fadeIn second">Email:</label>
+            <input type="text" formControlName="email" class="fadeIn second field_class" placeholder="Ingrese email">
+          </form>
+
+          <!--Contraseña-->
+          <form [formGroup]="formulario">
+            <label class="labels fadeIn third">Contraseña:</label>
+            <input type="password" formControlName="contraseña" class="fadeIn third field_class"  placeholder="Ingrese contraseña">
+
+            <!--Errores-->
+            <p *ngIf="errorMensaje != undefined" class="alert alert-danger">{{errorMensaje}}</p>
+
+            <input type="button" class="submit_class fadeIn fourth " value="Entrar" (click)="loguearUsuario(formulario)" id="pass">
+          </form><br>
+
+          <!--Regístrate-->
+          <label class="labels fadeIn five">¿Nuevo por aqui? </label>&nbsp;
+          <a class="labels fadeIn five" (click)="registrarNuevoUsuario()">Regístrate</a><br><br><br><br><br>
+
+          <!--Botones de Acceso Rapido-->
+          <div class="position-relative justify-content-center align-items-center">
+            <div class="position-absolute bottom-0 start-0">
+              <button mat-raised-button color="primary" class="fadeIn five" (click)="accesoRapido('Fernando')">  Fernando<br>Gonzalez  </button>
+            </div>
+            <div class="position-absolute bottom-0 start-50 translate-middle-x">
+              <button mat-raised-button color="primary" class="fadeIn five" (click)="accesoRapido('Kevin')">  Kevin <br>Quevedo  </button>
+            </div>
+            <div class="position-absolute bottom-0 end-0">
+              <button mat-raised-button color="primary" class="fadeIn five" (click)="accesoRapido('German')">  German <br>Fernandez  </button>
+            </div>
           </div>
+
+
+        </div>
       </form>
   </main>
   <footer>
-      <p>Desarrollado por <a href="#">Kevin Quevedo&trade;</a></p>
+      <p>© 2022 - Desarrollado por <a href="#">Kevin Quevedo&trade;</a></p>
   </footer>
 </body>

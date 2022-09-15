@@ -1,0 +1,10 @@
+.fondo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background: url(../../assets/Fondo-Log.jpg) no-repeat center center;
+  background-size: cover;
+}
+

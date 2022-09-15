@@ -1,0 +1,84 @@
+<div class="fondo position-relative">
+  <div class="position-absolute justify-center-items">
+    <div class="position-relative">
+      <img src="../../assets/Logo.png" alt=" " width="70" height="35" class="position-absolute top-0 start-50 translate-middle-x">
+    </div>
+    <div class="shadow-lg p-5 mb-3 bg-body rounded">
+
+      <h3 class="titulo fs-4" >Registrar Usuario</h3>
+      <div class="flex-column">
+        <!--INPUT NOMBRE -->
+        <form [formGroup]="formulario" class="form-floating mb-3 ">
+
+          <input type="text" class="form-control" formControlName="nombre" id="floatingName" placeholder="name" required>
+          <label for="floatingName">Nombre</label>
+
+          <div *ngIf="formulario.get('nombre')?.touched && formulario.get('nombre')?.errors?.['required']"
+                class="alert alert-warning alert-dismissible fade show" role="alert">Nombre Invalido!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        </form>
+        <!--INPUT APELLIDO -->
+        <form [formGroup]="formulario" class="form-floating mb-3">
+
+          <input type="text" class="form-control" formControlName="apellido" id="floatingLastName" placeholder="lastName" required>
+          <label for="floatingLastName">Apellido</label>
+
+          <div *ngIf="formulario.get('apellido')?.touched && formulario.get('apellido')?.errors?.['required']"
+                class="alert alert-warning alert-dismissible fade show" role="alert">Apellido Invalido!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        </form>
+        <!--INPUT EMAIL -->
+        <form [formGroup]="formulario" class="form-floating mb-3">
+
+          <input type="text" class="form-control" formControlName="email" id="floatingEmail" placeholder="email" required>
+          <label for="floatingEmail">Email</label>
+
+          <div *ngIf="formulario.get('email')?.touched && formulario.get('email')?.errors?.['required']"
+                class="alert alert-warning alert-dismissible fade show" role="alert">Email Invalido!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        </form>
+        <!--INPUT CONTRASEÑA -->
+        <form [formGroup]="formulario" class="form-floating mb-3">
+
+          <input type="password" class="form-control" formControlName="contraseña" id="floatingPass" placeholder="pass" required>
+          <label for="floatingPass">Contraseña</label>
+
+          <div *ngIf="formulario.get('contraseña')?.touched && formulario.get('contraseña')?.errors?.['required']"
+                class="alert alert-warning alert-dismissible fade show" role="alert">Contraseña Invalida!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        </form>
+        <!--INPUT REPETIR CONTRASEÑA -->
+        <form [formGroup]="formulario" class="form-floating mb-3">
+
+          <input type="password" class="form-control" formControlName="repcontraseña" id="floatingResPass" placeholder="repPass" required>
+          <label for="floatingResPass">Repetir Contraseña</label>
+
+          <div *ngIf="formulario.get('repcontraseña')?.touched && formulario.get('repcontraseña')?.errors?.['required']"
+                class="alert alert-warning alert-dismissible fade show" role="alert">Contraseña Invalida!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        </form>
+
+        <p *ngIf="exitoMensaje != undefined" class="alert alert-success">{{exitoMensaje}}</p>
+        <p *ngIf="errorMensaje != undefined" class="alert alert-danger">{{errorMensaje}}</p>
+        <p *ngIf="errorPass != undefined" class="alert alert-danger">{{errorPass}}</p>
+
+        <!--BOTON CREAR -->
+        <br>
+        <button mat-raised-button (click)="crearUsuario(formulario)" [disabled]="formulario.invalid" class="text-bg-success">Confirmar</button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
