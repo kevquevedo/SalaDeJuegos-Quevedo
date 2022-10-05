@@ -1,5 +1,49 @@
-<div class="card">
-  <div class="card-body ">
-    <p>JUEGOS WORKS!</p>
+
+<div class="container bg-light vw-100 " >
+  <div class="row justify-content-center p-3">
+
+    <div class="col text-center border-bottom fs-1 p-3 fw-bolder">
+      Juegos Disponibles
+    </div>
+    <div class="w-100"></div><br>
+
+    <div class="col-12 p-3 bg-info w-50">
+
+      <div id="carouselJuegos" class="carousel slide" data-bs-ride="true">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselJuegos" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselJuegos" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner"  >
+          <div class="carousel-item active row justify-content-center" (click)="irMayorMenor()" >
+            <h1 class="text-center fw-semibold border-bottom border-dark">Mayor o Menor</h1>
+            <img src="../../assets/mayormenor.jpg" width="500" height="500"  alt="...">
+          </div>
+          <div class="carousel-item row justify-content-center" (click)="irAhorcado()">
+            <h1 class="text-center fw-semibold border-bottom border-dark">Ahorcado</h1>
+            <img src="../../assets/ahorcado.png" width="500" height="500"  alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev " type="button" data-bs-target="#carouselJuegos" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden ">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselJuegos" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+    </div>
+    <div class="w-100"></div><br>
+    <div class="col text-center border-top fs-4 p-3 fst-italic">
+      En esta sección podrá visualizar los juegos actualmente disponibles.
+      <br>
+      Por favor, seleccione el que desee jugar.
+    </div>
+
   </div>
 </div>
+
+
+

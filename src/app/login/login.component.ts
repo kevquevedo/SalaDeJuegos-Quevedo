@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { collection, collectionData, Firestore} from '@angular/fire/firestore';
+import { collection, collectionData, Firestore, getDocs} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { UserLoggedService } from '../servicios/UserLoggedService/user-logged.service';
+import { DocumentData, getDocFromCache, QuerySnapshot } from 'firebase/firestore';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   errorMensaje: string | undefined;
   public formulario: FormGroup;
+  private usuAux: string | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -40,12 +42,16 @@ export class LoginComponent implements OnInit {
     signInWithEmailAndPassword(this.auth, email, contraseña)
     .then(() => {
 
-      this.obtenerUsuarios().subscribe(usuarios =>{
-        usuarios.forEach(usuario => {
-          if((usuario as any).email == email){
-            this.usuarioLogueado.updateUserLogged((usuario as any).nombre, (usuario as any).apellido);
+      this.obtenerUsuarios().then(mensaje =>{
+        //Obtengo los datos del usuario registrado
+        mensaje.forEach((doc) => {
+          if((doc.data() as any).email == email){
+            this.usuAux = doc.data() as unknown as string
           }
-        });
+        })
+
+        //Actualizo el usuario logueado
+        this.usuarioLogueado.updateUserLogged((this.usuAux as any).nombre, (this.usuAux as any).apellido);
       })
 
       this.router.navigateByUrl('');
@@ -68,7 +74,6 @@ export class LoginComponent implements OnInit {
           this.errorMensaje = undefined
         },3500)
       }
-      console.log(error)
     })
   }
 
@@ -76,9 +81,10 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/registro')
   }
 
-  obtenerUsuarios(): Observable<[]>{
+  async obtenerUsuarios(): Promise<QuerySnapshot<DocumentData>>{
+    //Obtengo desde Firebase la lista de usuarios
     const usuarios = collection(this.firestore, 'usuarios')
-    return collectionData(usuarios, {idField: 'id'}) as Observable<[]>
+    return await getDocs(usuarios);
   }
 
   accesoRapido(nombre: string){
@@ -106,15 +112,19 @@ export class LoginComponent implements OnInit {
     signInWithEmailAndPassword(this.auth, mail, pass)
     .then(() => {
 
-      this.obtenerUsuarios().subscribe(usuarios =>{
-        usuarios.forEach(usuario => {
-          if((usuario as any).email == mail){
-            this.usuarioLogueado.updateUserLogged((usuario as any).nombre, (usuario as any).apellido);
+      this.obtenerUsuarios().then(mensaje =>{
+        //Obtengo los datos del usuario registrado
+        mensaje.forEach((doc) => {
+          if((doc.data() as any).email == mail){
+            this.usuAux = doc.data() as unknown as string
           }
-        });
-      })
+        })
 
+        //Actualizo el usuario logueado
+        this.usuarioLogueado.updateUserLogged((this.usuAux as any).nombre, (this.usuAux as any).apellido);
+      })
       this.router.navigateByUrl('');
     })
+
   }
 }

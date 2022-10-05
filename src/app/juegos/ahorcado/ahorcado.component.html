@@ -1,0 +1,82 @@
+<div class="container bg-light vw-100" >
+  <div class="row justify-content-center p-3">
+
+    <div class="col text-center border-bottom fs-1 p-3 fw-bolder">
+      Ahorcado
+    </div>
+    <div class="w-100"></div><br>
+
+    <div class="p-3 bg-info row text-center">
+      <div class="col-4">
+        <img src="../../../assets/Ahorcado_{{cantErrores}}.PNG" width="200" height="200" alt="">
+      </div>
+      <div class="col-8">
+        <label class="mt-5" *ngFor="let letra of palabraSeleccionada" >
+          <br>
+
+          <label class="w-50 fs-4 fw-semibold" *ngIf="letra.visible">{{letra.valor | uppercase}}</label>
+          <label class="border-bottom border-dark w-50" *ngIf="!letra.visible"></label>
+          <label >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+
+        </label>
+      </div>
+    </div>
+
+    <div class="keyboard p-3" >
+
+      <div class="keyboard__row">
+
+        <div class="key--letter" data-char="Q" (click)="letraSeleccionada('Q')">Q</div>
+        <div class="key--letter" data-char="W" (click)="letraSeleccionada('W')">W</div>
+        <div class="key--letter" data-char="E" (click)="letraSeleccionada('E')">E</div>
+        <div class="key--letter" data-char="R" (click)="letraSeleccionada('R')">R</div>
+        <div class="key--letter" data-char="T" (click)="letraSeleccionada('T')">T</div>
+        <div class="key--letter" data-char="Y" (click)="letraSeleccionada('Y')">Y</div>
+        <div class="key--letter" data-char="U" (click)="letraSeleccionada('U')">U</div>
+        <div class="key--letter" data-char="I" (click)="letraSeleccionada('I')">I</div>
+        <div class="key--letter" data-char="O" (click)="letraSeleccionada('O')">O</div>
+        <div class="key--letter" data-char="P" (click)="letraSeleccionada('U')">P</div>
+
+      </div><br>
+      <div class="keyboard__row">
+
+        <div class="key--letter" data-char="A" (click)="letraSeleccionada('A')">A</div>
+        <div class="key--letter" data-char="S" (click)="letraSeleccionada('S')">S</div>
+        <div class="key--letter" data-char="D" (click)="letraSeleccionada('D')">D</div>
+        <div class="key--letter" data-char="F" (click)="letraSeleccionada('F')">F</div>
+        <div class="key--letter" data-char="G" (click)="letraSeleccionada('G')">G</div>
+        <div class="key--letter" data-char="H" (click)="letraSeleccionada('H')">H</div>
+        <div class="key--letter" data-char="J" (click)="letraSeleccionada('J')">J</div>
+        <div class="key--letter" data-char="K" (click)="letraSeleccionada('K')">K</div>
+        <div class="key--letter" data-char="L" (click)="letraSeleccionada('L')">L</div>
+
+      </div><br>
+      <div class="keyboard__row">
+
+        <div class="key--letter" data-char="Z" (click)="letraSeleccionada('Z')">Z</div>
+        <div class="key--letter" data-char="X" (click)="letraSeleccionada('X')">X</div>
+        <div class="key--letter" data-char="C" (click)="letraSeleccionada('C')">C</div>
+        <div class="key--letter" data-char="V" (click)="letraSeleccionada('V')">V</div>
+        <div class="key--letter" data-char="B" (click)="letraSeleccionada('B')">B</div>
+        <div class="key--letter" data-char="N" (click)="letraSeleccionada('N')">N</div>
+        <div class="key--letter" data-char="M" (click)="letraSeleccionada('M')">M</div>
+
+      </div>
+
+
+    </div>
+    <div class="w-100"></div>
+
+    <div class="col text-center border-top fs-4 p-3 fst-italic">
+      <button class="btn btn-info" (click)="elegirPalabra()">Palabra Nueva</button>
+    </div>
+
+    <p class="fs-4 p-3 text-danger border-bottom border-danger text-center fw-semibold"
+    *ngIf="mensajeGameOver != false">Perdiste! Intentalo otra vez</p>
+
+    <p class="fs-4 p-3 text-success border-bottom border-success text-center fw-semibold"
+    *ngIf="mensajeGameWin != false">GANASTE!</p>
+
+  </div>
+</div>
+

@@ -14,7 +14,7 @@
 
       <div class="d-flex ">
         <!--BOTON LOGIN-->
-        <button *ngIf="usuarioNombre == undefined && usuarioApellido == undefined" mat-raised-button class="text-bg-info" (click)="irAlLogin()">
+        <button *ngIf="usuarioNombre == undefined && usuarioApellido == undefined" mat-raised-button class="text-bg-info" (click)="hacerLogin()">
           <mat-icon>login</mat-icon>
           Ingresar
         </button>
@@ -25,7 +25,7 @@
 
         <div class="d-flex justify-content-center align-items-center">
           <!--BOTON LOGOUT-->
-          <button *ngIf="usuarioNombre != undefined && usuarioApellido != undefined" mat-raised-button class="text-bg-danger" (click)="irAlLogout()">
+          <button *ngIf="usuarioNombre != undefined && usuarioApellido != undefined" mat-raised-button class="text-bg-danger" (click)="hacerLogout()">
             <mat-icon>logout</mat-icon>
             Salir
           </button>
@@ -37,6 +37,7 @@
         <div class="navbar-nav">
           <a class="nav-link active" routerLink="">Inicio</a>
           <a class="nav-link active" routerLink="juegos">Juegos Disponibles</a>
+          <a class="nav-link active" routerLink="chat">Chat</a>
           <a class="nav-link active" routerLink="quiensoy">Quien Soy</a>
         </div>
       </div>
@@ -44,7 +45,14 @@
     </div>
   </nav>
 </div>
-<div class="contenido">
-  <router-outlet></router-outlet>
-</div>
 
+<div class="contenido">
+
+  <router-outlet></router-outlet>
+
+</div>
+<!-- <div class="row vh-100">
+  <div class="col-12">
+  </div>
+
+</div> -->

@@ -1,0 +1,46 @@
+<div class="container bg-light vw-100 vw-75 vh-75" >
+  <div class="row justify-content-center p-3 vw-75 vh-75">
+
+    <div class="col text-center border-bottom fs-1 p-3 fw-bolder">
+      Mayor, Menor o Igual
+    </div>
+    <div class="w-100"></div><br>
+
+    <div class="fs-4 p-3 text-dark border-bottom border-danger text-center fw-semibold">
+      Puntaje: {{puntaje}}
+    </div>
+
+
+    <div class="p-3 bg-info row text-center">
+      <div class="col-4">
+        <img src="{{ultimaCarta.imagen}}" width="200" height="250" alt="">
+      </div>
+      <div *ngIf="existeNuevaCarta == true" class="col-4">
+        <img src="{{nuevaCarta.imagen}}" width="200" height="250" alt="">
+      </div>
+    </div>
+
+
+    <div class="w-100"></div>
+
+    <div class="col text-center border-top fs-4 p-3">
+      <button class="btn btn-info fst-italic fw-bolder btn-lg" (click)="sacarNuevaCarta('mayor')">Mayor</button>
+    </div>
+
+    <div class="col text-center border-top fs-4 p-3">
+      <button class="btn btn-info fst-italic fw-bolder btn-lg" (click)="sacarNuevaCarta('igual')">Igual</button>
+    </div>
+
+    <div class="col text-center border-top fs-4 p-3">
+      <button class="btn btn-info fst-italic fw-bolder btn-lg" (click)="sacarNuevaCarta('menor')">Menor</button>
+    </div>
+
+    <p class="fs-4 p-3 text-danger border-bottom border-danger text-center fw-semibold"
+    *ngIf="mensajeGameOver != false && mensajeGameWin != true">Perdiste! Intentalo otra vez</p>
+
+    <p class="fs-4 p-3 text-success border-bottom border-success text-center fw-semibold"
+    *ngIf="mensajeGameWin != false && mensajeGameOver != true">GANASTE!</p>
+
+  </div>
+</div>
+

@@ -1,0 +1,36 @@
+<div class="card align-items-center vh-100" >
+
+  <h1 class="p-2">Chat de Sala</h1>
+
+  <mat-card class="overflow-auto h-75 me-4 ms-4 w-75  border border-dark shadow bg-body rounded">
+
+    <div *ngFor="let comentario of comentarios">
+      <div class="globo position-relative">
+
+        <div class="position-absolute top-0 start-0 p-1" [ngStyle]="{'font-weight': 'bold'}">{{comentario.usuario }}</div>
+        <div class="position-absolute top-0 end-0 p-1" [ngStyle]="{'font-weight': 'bold'}">{{comentario.hora | date: 'shortTime'}}</div><br>
+        <div class="p-1">{{comentario.mensaje}}</div>
+
+      </div>
+    </div>
+
+  </mat-card><br>
+
+  <div class="row" style="width: 82%;">
+    <div class="col-10 ">
+      <form [formGroup]="chat">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label >Haz un comentario...</mat-label>
+          <input matInput formControlName="mensaje">
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="col-2 ">
+      <button class="text-bg-primary" mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="enviarMensaje()">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+  </div>
+
+
+</div>
